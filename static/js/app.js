@@ -5,7 +5,10 @@ function buildMetadata(sample) {
     let metadata = data.metadata;  
 
     // Filter the metadata for the object with the desired sample number
-    var results = metadata.filter(function(sampleObj) { return sampleObj.id == sample; });
+    var results = metadata.filter(function(sampleObj) { 
+      return sampleObj.id == sample; 
+    });
+
     var data = results[0];
     // Use d3 to select the panel with id of `#sample-metadata`
     // Use `.html("") to clear any existing metadata
@@ -66,7 +69,11 @@ function buildCharts(sample) {
 
     // For the Bar Chart, map the otu_ids to a list of strings for your yticks
     let x = sample_values.slice(0, 10).reverse();
-    let y = otu_ids.slice(0, 10).map(function(otuID) { return `OTU ${otuID}`; }).reverse();
+    
+    let y = otu_ids.slice(0, 10).map(function(otuID) { 
+      return `OTU ${otuID}`; 
+    }).reverse();
+
     let text = otu_labels.slice(0, 10).reverse();
       
     let barData = {
